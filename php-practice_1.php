@@ -13,7 +13,7 @@ echo date('現在時刻は、Y年m月d日 H時i分s秒です。');
 
 // Q4 条件分岐-1 if文
 $device = 'windows';
-if ($device == 'windows' || $device == 'mac') {
+if ($device === 'windows' || $device === 'mac') {
     echo '使用OSは' . $device . 'です。';
 }
 else {
@@ -26,38 +26,54 @@ $message = ($age >= 20) ? '成人です。' : '未成人です。';
 echo $message;
 
 // Q6 配列
-$kantou = ['東京都', '神奈川県', '埼玉県', '栃木県', '千葉県', '群馬県', '茨城県'];
+$kantou = [
+    '東京都',
+    '神奈川県',
+    '埼玉県',
+    '栃木県',
+    '千葉県',
+    '群馬県',
+    '茨城県'
+];
 echo $kantou[3] . 'と' . $kantou[4] . 'は関東地方の都道府県です。';
 
-
 // Q7 連想配列-1
-$capital = ['東京都' => '新宿区', '神奈川県' => '横浜市', '千葉県' => '千葉市', '埼玉県' => 'さいたま市', '栃木県' => '宇都宮市', '群馬県' => '前橋市', '茨城県' => '水戸市'];
-echo $capital['東京都'];
-echo "\n";
-echo $capital['神奈川県'];
-echo "\n";
-echo $capital['千葉県'];
-echo "\n";
-echo $capital['埼玉県'];
-echo "\n";
-echo $capital['栃木県'];
-echo "\n";
-echo $capital['群馬県'];
-echo "\n";
-echo $capital['茨城県'];
+$capital = [
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市'
+    ];
+foreach ($capital as $x => $y) {
+    echo $y;
+    echo "\n";
+}
 
 // Q8 連想配列-2
-$capital = ['東京都' => '新宿区', '神奈川県' => '横浜市', '千葉県' => '千葉市', '埼玉県' => 'さいたま市',
-'栃木県' => '宇都宮市', '群馬県' => '前橋市', '茨城県' => '水戸市', '大阪府' => '大阪市', '静岡県' => '静岡市'];
+$capital = [
+    '東京都' => '新宿区',
+    '神奈川県' => '横浜市',
+    '千葉県' => '千葉市',
+    '埼玉県' => 'さいたま市',
+    '栃木県' => '宇都宮市',
+    '群馬県' => '前橋市',
+    '茨城県' => '水戸市',
+    '大阪府' => '大阪市',
+    '静岡県' => '静岡市'
+];
 foreach ($capital as $key => $value) {
     if ($key == '埼玉県') {
         echo $key . 'の県庁所在地は' . $value . 'です。';
+        exit;
     }
 }
 
 // Q9 連想配列-3
 foreach ($capital as $key => $value) {
-  if ($key == '大阪府' || $key == '静岡県') {
+  if ($key === '大阪府' || $key === '静岡県') {
       echo $key . 'は関東地方ではありません。';
       echo "\n";
   }
@@ -65,6 +81,7 @@ foreach ($capital as $key => $value) {
       echo $key . 'の県庁所在地は' . $value . 'です。';
       echo "\n";
   }
+}
 
   // if (in_array('大阪府', $capital)) {
   //   echo $key . 'は関東地方ではありません。';
@@ -74,22 +91,25 @@ foreach ($capital as $key => $value) {
   //     echo $key . 'の県庁所在地は' . $value . 'です。';
   //     echo "\n";
   // }
-}
 
 // Q10 関数-1
 function hello($name) {
-  echo $name . 'さん、こんにちは。';
+    return $name . 'さん、こんにちは。';
 }
-hello('清水');
+echo hello('清水');
 echo "\n";
-hello('中村');
+echo hello('中村');
 
 // Q11 関数-2
 function calcTaxInPrice($price) {
-  $taxInPrice = $price * 1.1;
-  return $price . 'の商品の税込価格は' . $taxInPrice . 'です。';
-}
-echo calcTaxInPrice(1000);
+    $taxInPrice = $price * 1.1;
+    return $taxInPrice;
+    // ③$taxInPriceを返り値として呼び出し元に返す
+  }
+  $price = 1000;
+  // ①税抜価格を変数に代入
+  echo $price . '円の商品の税込価格は' . calcTaxInPrice($price) . '円です。';
+  // ②引数を渡して関数を呼び出す
 
 // Q12 関数とif文
 function distinguishNum($num) {
@@ -106,25 +126,21 @@ distinguishNum(12);
 
 // Q13 関数とswitch文
 function evaluateGrade($grade) {
-  switch ($grade) {
-      case 'A':
-      case 'B':
-          echo '合格です。';
-          break;
-          
-      case 'C':
-          echo '合格ですが追加課題があります。';
-          break;
-          
-      case 'D':
-          echo '不合格です。';
-          break;
-      
-      default:
-          echo '判定不明です。講師に問い合わせてください。';
-          break;
+    switch ($grade) {
+        case 'A':
+        case 'B':
+            return '合格です。';
+            
+        case 'C':
+            return '合格ですが追加課題があります。';
+            
+        case 'D':
+            return '不合格です。';
+        
+        default:
+            return '判定不明です。講師に問い合わせてください。';
+    }
   }
-}
-evaluateGrade('B');
+  echo evaluateGrade('C');
 
 ?>

@@ -93,8 +93,10 @@ echo $now->modify('-1 months')->format('Y-m-d');
 
 $now = new DateTime(); // 変数nowに現在日時を代入
 $past = new DateTime('1992-04-25'); //  変数pastに指定日時を代入
-$diff = $now->diff($past); // diffメソッドを使って現在日時と指定日時の差分を取得し変数diffに代入
-echo 'あの日から' . $diff->format('%a') . '日経過しました。'; // formatメソッドを使って差分日数を取得して出力
+echo 'あの日から' . $now->diff($past)->format('%a') . '日経過しました。';
+// diffメソッドで現在日時と指定日時の差分を取得。
+// formatメソッドを使って差分日数を取得して出力。
+// メソッドチェーンを使って記述。
 ?>
 
 
