@@ -67,7 +67,7 @@ $capital = [
 foreach ($capital as $key => $value) {
     if ($key == '埼玉県') {
         echo $key . 'の県庁所在地は' . $value . 'です。';
-        exit;
+        break;
     }
 }
 
@@ -113,16 +113,16 @@ function calcTaxInPrice($price) {
 
 // Q12 関数とif文
 function distinguishNum($num) {
-  if ($num % 2 === 0) {
-      echo $num . 'は偶数です。';
+    if ($num % 2 === 0) {
+        return $num . 'は偶数です。';
+    }
+    else {
+        return $num . 'は奇数です。';
+    }
   }
-  else {
-      echo $num . 'は奇数です。';
-  }
-}
-distinguishNum(7);
-echo "\n";
-distinguishNum(12);
+  echo distinguishNum(7);
+  echo "\n";
+  echo distinguishNum(12);
 
 // Q13 関数とswitch文
 function evaluateGrade($grade) {
