@@ -10,6 +10,11 @@ echo "\n" . $sum /2;
 
 // Q3 日付操作
 echo date('現在時刻は、Y年m月d日 H時i分s秒です。');
+// dateメソッドはphpマニュアルの説明で以下のように書かれている。
+// date(string $format, ?int $timestamp = null): string
+// dateメソッドの引数は「指定されたformatの書式を文字列型で記述しなさい」
+// もしくは 「timestamp (Unixタイムスタンプ)を数値型で記述しなさい」と示されている(ただし第2引数の指定がない場合は現在時刻を文字列型で返す)」
+// Unixタイムスタンプは1970年1月1日午前0時0分0秒から指定時刻までの経過秒数を表す。
 
 // Q4 条件分岐-1 if文
 $device = 'windows';
@@ -19,11 +24,14 @@ if ($device === 'windows' || $device === 'mac') {
 else {
     echo 'どちらでもありません。';
 }
+// 比較演算子 ==  →　値が等しい場合trueを返す。 === →　型と値両方の完全一致の場合trueを返す。
+
 
 // Q5 条件分岐-2 三項演算子
 $age = 19;
 $message = ($age >= 20) ? '成人です。' : '未成人です。';
 echo $message;
+// 単純なifelse文を書く場合は1行で処理が書ける三項演算子を使う
 
 // Q6 配列
 $kantou = [
@@ -36,6 +44,7 @@ $kantou = [
     '茨城県'
 ];
 echo $kantou[3] . 'と' . $kantou[4] . 'は関東地方の都道府県です。';
+// 複数要素の配列は改行で書くと見やすい
 
 // Q7 連想配列-1
 $capital = [
@@ -51,6 +60,7 @@ foreach ($capital as $x => $y) {
     echo $y;
     echo "\n";
 }
+// foreach文で繰り返し処理を行う{$xがキー(県)で$yが値(県庁所在地)}
 
 // Q8 連想配列-2
 $capital = [
@@ -65,11 +75,12 @@ $capital = [
     '静岡県' => '静岡市'
 ];
 foreach ($capital as $key => $value) {
-    if ($key == '埼玉県') {
+    if ($key === '埼玉県') {
         echo $key . 'の県庁所在地は' . $value . 'です。';
         break;
     }
 }
+// foreach文で繰り返し処理を行いif文で取得した値を出力し、breakでループ処理を終了している。
 
 // Q9 連想配列-3
 foreach ($capital as $key => $value) {
@@ -82,6 +93,7 @@ foreach ($capital as $key => $value) {
       echo "\n";
   }
 }
+// 上の処理にelseが加わっただけ。
 
   // if (in_array('大阪府', $capital)) {
   //   echo $key . 'は関東地方ではありません。';
@@ -99,6 +111,7 @@ function hello($name) {
 echo hello('清水');
 echo "\n";
 echo hello('中村');
+// hello関数の引数を指定し、返り値を呼び出し元に返している。
 
 // Q11 関数-2
 function calcTaxInPrice($price) {
@@ -123,6 +136,7 @@ function distinguishNum($num) {
   echo distinguishNum(7);
   echo "\n";
   echo distinguishNum(12);
+// 上の処理にifelseが加わっただけ。
 
 // Q13 関数とswitch文
 function evaluateGrade($grade) {
@@ -142,5 +156,5 @@ function evaluateGrade($grade) {
     }
   }
   echo evaluateGrade('C');
-
+// switch文を使って条件分岐処理。returnを書くことで取得したら即処理終了できる。
 ?>

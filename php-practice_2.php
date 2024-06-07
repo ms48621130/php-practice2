@@ -48,7 +48,7 @@ echo $personalInfos[1]['name'] . 'の電話番号は' . $personalInfos[1]['tel']
 foreach ($personalInfos as $x => $y) {
     echo ($x+1) .'番目の' . $personalInfos[$x]['name'] . 'のメールアドレスは' . $personalInfos[$x]['mail'] . 'で、電話番号は'. $personalInfos[$x]['tel'] . 'です。';
     // 上の問題と同様にしてバリューを取得。こちらはforeachで配列内要素をループ処理で取得している。
-    echo "\n"; // 初期値のキーが1に変更されていない
+    echo "\n";
 }
 
 $ageList = [25, 30, 18];
@@ -74,7 +74,7 @@ class Student //クラス作成。クラスとはオブジェクトを構成す�
 
     public function attend($className) // 変数classNameに呼び出し元の引数PHPが代入される。
     {
-        echo $this->studentName . 'は' . $className . 'の授業に参加しました。学籍番号:' . $this->studentId ;
+        echo $this->studentName . 'は' . $className . 'の授業に参加しました。学籍番号:' . $this->studentId;
         // クラス内ではインスタンス自身を表す$thisを使って変数を指定する
     }
 }
@@ -86,13 +86,13 @@ $shimizu = new Student(6, '清水');
 $shimizu->attend('PHP'); // クラス内のattendメソッドを呼び出す
 
 // Q5 定義済みクラス
-$now = new DateTime(); // この1行だけでDateTimeクラスが呼び出せる
+$now = new DateTime(); // DateTimeクラスに引数を入れない場合、現在時刻が取得できる。
 echo $now->modify('-1 months')->format('Y-m-d');
-// formatメソッドで現在日時や曜日が取得できる。また文字列型で取得することもできる。
-// modifyメソッドは日時変更をしたい際に使用する
+echo "\n";
+// formatメソッドで現在日時や曜日を文字列型で取得できる。
+// modifyメソッドは日時変更をしたい際に使用する。
 
-$now = new DateTime(); // 変数nowに現在日時を代入
-$past = new DateTime('1992-04-25'); //  変数pastに指定日時を代入
+$past = new DateTime('1992-04-25'); // 変数pastに指定日時を代入
 echo 'あの日から' . $now->diff($past)->format('%a') . '日経過しました。';
 // diffメソッドで現在日時と指定日時の差分を取得。
 // formatメソッドを使って差分日数を取得して出力。
