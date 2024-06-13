@@ -71,8 +71,8 @@ $prev = new DateTime('2000-1-1');
 echo $prev->diff($now)->format('%a')
 ```
 
-- datetimeクラスを検索→datetimeクラスのdiffメソッドを検索→DateTime::diffメソッドの返り値はDateIntervalオブジェクト
-→dateIntervalオブジェクトを検索→dateIntervalオブジェクトのformatメソッドを検索→dateInterval::formatの返り値は文字列のフォーマットされた間隔。
+- datetimeクラスを検索→datetime::diffを押下→DateTime::diffメソッドの返り値はDateIntervalオブジェクトであると分かる。
+→返り値であるdateIntervalオブジェクトを押下→dateInterval::formatを押下→dateInterval::formatの返り値は文字列のフォーマットされた間隔であると分かる。
 
 メソッドチェーン
 ・シングルアロー演算子の前は必ずオブジェクト型
